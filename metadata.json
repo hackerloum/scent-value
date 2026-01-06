@@ -1,0 +1,7 @@
+{
+  "name": "ScentValue - Perfume Mills Calculator",
+  "description": "A specialized tool for calculating perfume pricing based on gross weight and volume metrics, featuring an AI-powered fragrance assistant.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
