@@ -1,11 +1,15 @@
 
 import { GoogleGenAI, Type } from "@google/genai";
 
-// Always use process.env.API_KEY directly for initialization
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+/**
+ * According to Google GenAI coding guidelines, we must initialize the client 
+ * right before making an API call to ensure it uses the correct environment variables 
+ * and avoids errors during script evaluation in browser environments.
+ */
 
 export const getFragranceInsights = async (query: string) => {
   try {
+    const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
     const response = await ai.models.generateContent({
       model: 'gemini-3-flash-preview',
       contents: query,
@@ -27,6 +31,7 @@ export const getFragranceInsights = async (query: string) => {
 
 export const analyzePerfumeScaleImage = async (base64Image: string) => {
   try {
+    const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
     const response = await ai.models.generateContent({
       model: 'gemini-3-flash-preview',
       contents: {
@@ -52,6 +57,7 @@ export interface BatchItem {
 
 export const analyzeBatchDocument = async (base64Image: string): Promise<BatchItem[]> => {
   try {
+    const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
     const response = await ai.models.generateContent({
       model: 'gemini-3-flash-preview',
       contents: {
